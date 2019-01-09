@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Nathan Farren - Portfolio</title>
+  <meta id="description" content="Nathan Farren - Portfolio Website">
+  <meta id="author" content="Nathan Farren">
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="navbar">
+
+    <div id="nav">
+      <ul class="lists">
+        <li>HOME</li>
+        <li>BIO</li>
+        <li>PORTFOLIO</li>
+        <li>SKILLS</li>
+        <li>CONTACT</li>
+      </ul>
+    </div>
+
+    <!-- Potential feature to add different languages, translate full page -->
+    <!--
+    <div id="lang">
+
+      <ul class="lists">
+        <li>LANGUAGE</li>
+        <li>
+          <img src="resources/flag_great_britain.png" alt="Flag of Great Britain" />
+        </li>
+        <li>
+          <img src="resources/flag_spain.png" alt="Flag of Spain" />
+        </li>
+        <li>
+          <img src="resources/flag_germany.png" alt="Flag of Germany" />
+        </li>
+      </ul>
+
+    </div>
+    -->
+
+  </div>
+
+  <div class="videocontainer">
+    <!-- Blurred script typing video from PexelsVideos -->
+    <video loop muted autoplay poster="img/videoframe.jpg" class="bgvideo">
+      <source src="resources/BACKGROUND VID.mp4" type="video/mp4">
+      <source src="resources/BACKGROUND VID.webm" type="video/webm">
+    </video>
+  </div>
+  <div id="home">
+
+    <div id="info">
+
+      <div id="name">
+        <span>NATHAN FARREN</span>
+      </div>
+
+      <div id="profession">
+        <span>GRADUATE SOFTWARE ENGINEER</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <span>SCROLL OR USE NAVIGATION</span>
+  </div>
+
+  <div id="bio" class="sections">
+    <h1>Bio</h1>
+    <p>Include a professional biography here. Write in third person</p>
+  </div>
+
+  <div id="portfolio" class="sections">
+    <h1>Portfolio</h1>
+    <p>Portfolio will go here, display image carousel and link to GitHub</p>
+    <!-- Carousel of images of projects -->
+    <!-- Contain a link to GitHub repository of projects -->
+
+  </div>
+
+  <div id="skills" class="sections">
+    <h1>Skills</h1>
+    <p>Skills will go here, include education, experience too</p>
+
+    <h3>Education</h3>
+    <p>2014-2017 <br/>
+      Liverpool John Moores University (LJMU) <br/>
+      BSc (Hons) Software Engineering <br/>
+      Classification: 2:1
+    </p>
+    <p>2013-2014 <br/>
+      Liverpool John Moores University (LJMU) <br/>
+      Foundation Degree in Engineering & Technology<br/>
+      Classification: 2:1
+    </p>
+    <p>2010-2013 <br/>
+      Limavady Grammar School <br/>
+      3x A-Levels including ICT & Maths
+    </p>
+    <p>2016-2010 <br/>
+      St. Patrick's & St. Brigid's College <br/>
+      8x GCSEs including English & Maths
+    </p>
+
+    <h3>Experience</h3>
+    <p></p>
+
+    <h3>Skills</h3>
+    <p></p>
+    <!-- Include Education, Work Experience (Refer to Portfolio again) -->
+    <!-- And Skills -->
+  </div>
+
+  <div id="contact" class="sections">
+    <h1>Contact</h1>
+    <p>Include contact form here or just contact details</p>
+    <!-- Contact form or just include contact details -->
+  </div>
+
+  <script>
+    $(document).ready(function (){
+
+      // Hide page initially, bring in to focus with fade
+      $("html, body").css('opacity', '0');
+      $("html, body").fadeTo(1500 , 1, function() {
+      });
+
+      // Bounce footer text
+      $("#footer")
+               .animate({ marginBottom: "30px" }, 800 )
+               .animate({ marginBottom: "20px" }, 800 )
+               .animate({ marginBottom: "30px" }, 800 )
+               .animate({ marginBottom: "20px" }, 800 );
+
+      // On click of navigation, scroll to section and slide in
+      $("#nav li").click(function (){
+        var goTo = '#' + $(this).text().toLowerCase();
+        $('html, body').animate({
+          scrollTop: $(goTo).offset().top
+        }, 1500);
+
+        $(goTo).find("h1").eq(0).addClass("active");
+        $(".active").animate({'left': '0px'},1750);
+
+      });
+
+      // On scroll, fade home info, bring back navigation bar colour
+      $(window).scroll(function () {
+        var scrollTop = $(window).scrollTop();
+        var height = $(window).height() / 1.5;
+        $('#name, #profession, #footer').css({
+            'opacity': ((height - scrollTop) / height)
+        });
+
+        var alpha = ((scrollTop - height) / height );
+        if (alpha < 0.5){
+          $('#navbar').css(
+            'background-color', 'rgba(238,238,238,' + alpha + ')');
+          $('#navbar').css(
+            'color', 'rgb(255,255,255)');
+        } else {
+          $('#navbar').css(
+            'background-color', 'rgba(238,238,238,' + 0.5 + ')');
+          $('#navbar').css(
+            'color', 'rgb(0,0,0)');
+        }
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>
