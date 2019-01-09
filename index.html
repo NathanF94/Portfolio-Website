@@ -140,12 +140,12 @@
       $("html, body").fadeTo(1500 , 1, function() {
       });
 
-      // Bounce footer text
-      $("#footer")
-               .animate({ marginBottom: "30px" }, 800 )
-               .animate({ marginBottom: "20px" }, 800 )
-               .animate({ marginBottom: "30px" }, 800 )
-               .animate({ marginBottom: "20px" }, 800 );
+      // Make footer text "bounce"
+      for (i = 0; i < 4; i++){
+        $("#footer")
+                 .animate({ marginBottom: "30px" }, 800 )
+                 .animate({ marginBottom: "20px" }, 800 );
+      }
 
       // On click of navigation, scroll to section and slide in
       $("#nav li").click(function (){
